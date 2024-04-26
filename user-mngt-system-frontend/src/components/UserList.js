@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {User} from './index';
 
-const UserList = () => {
+const UserList = ({ user }) => {
 
   const USER_API_BASE_URL = "http://localhost:8080/api/v1/users";
 
@@ -29,7 +29,7 @@ const UserList = () => {
     }
 
     fetchData();
-  }, []);
+  }, [user]);
 
   return (
     <div className='container mx-auto my-8'>

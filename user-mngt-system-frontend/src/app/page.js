@@ -1,5 +1,5 @@
 "use client";
-import { AddUser, Navbar, UserList } from "../components/index"
+import { AddUser, Navbar } from "../components/index"
 import Head from "next/head"
 
 const Home = () => {
@@ -13,7 +13,6 @@ const Home = () => {
 
       <main>
         <AddUser />
-        <UserList />
       </main>
     </div>
   )
