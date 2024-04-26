@@ -40,7 +40,7 @@ const AddUser = () => {
 
   const saveUser = async (e) => {
     e.preventDefault();
-    const USER_API_BASE_URL = "http://localhost:8080/api/v1/user";
+    const USER_API_BASE_URL = "http://localhost:8080/api/v1/users";
 
     try {
       const response = await fetch(USER_API_BASE_URL, {

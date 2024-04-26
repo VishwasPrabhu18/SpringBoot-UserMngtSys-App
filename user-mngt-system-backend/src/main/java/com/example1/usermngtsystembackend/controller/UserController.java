@@ -21,7 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/user")
+    @PostMapping("/users")
     public User saveUser(@RequestBody User user) {
         return userService.saveUser(user);
     }
@@ -38,7 +38,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/users/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteUser(@PathVariable("id") long id) {
         boolean deleted = false;
         deleted = userService.deleteUser(id);
@@ -48,7 +48,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
         user = userService.updateUser(id, user);
         return ResponseEntity.ok(user);

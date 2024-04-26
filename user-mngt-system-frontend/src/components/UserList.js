@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {User} from './index';
+import { User } from './index';
 
 const UserList = ({ user }) => {
 
@@ -31,6 +31,22 @@ const UserList = ({ user }) => {
     fetchData();
   }, [user]);
 
+  const deleteUser = async (e, id) => {
+    e.preventDefault();
+
+    fetch(`${USER_API_BASE_URL}/${id}`, {
+      method: 'DELETE'
+    }).then((res) => {
+      if (res.ok) {
+        setUsers((prevElem) => {
+          return prevElem.filter((user) => user.id !== id);
+        });
+      }
+    }).catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
   return (
     <div className='container mx-auto my-8'>
       <div className='flex shadow border-b'>
@@ -47,7 +63,7 @@ const UserList = ({ user }) => {
             {
               loading
                 ? <tr><td colSpan={4} className='text-center px-6 py-4 whitespace-nowrap'>Loading...</td></tr>
-                : users?.map((user) => <User key={user.id} user={user} />)
+                : users?.map((user) => <User key={user.id} user={user} deleteUser={deleteUser} />)
             }
           </tbody>
         </table>
